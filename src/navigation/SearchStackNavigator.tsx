@@ -28,3 +28,6 @@ const SearchStackNavigator = () => (
 
 
 export default SearchStackNavigator;
+
+
+
