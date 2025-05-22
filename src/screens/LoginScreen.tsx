@@ -1,33 +1,47 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Alert } from 'react-native';
 import styled from 'styled-components/native';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../navigation/AppNavigator';
+import { AuthContext } from '../context/AuthContext';
 
+type LoginScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Login'>;
 
 const LoginScreen = () => {
+  const navigation = useNavigation<LoginScreenNavigationProp>();
+  const authContext = useContext(AuthContext);
+
+  if (!authContext) {
+    throw new Error('AuthContext must be used within an AuthProvider');
+  }
+
+  const { login } = authContext;
+
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleLogin = () => {
-    if (!username || !password) {
-      Alert.alert('Erro', 'Preencha todos os campos');
-      return;
-    }
+  const handleLogin = async () => {
+  if (!username || !password) {
+    Alert.alert('Erro', 'Preencha todos os campos');
+    return;
+  }
 
-    Alert.alert('Sucesso', `Bem-vindo, ${username}!`);
-  };
+  const success = await login(username, password);
 
-  const navigation = useNavigation<NativeStackNavigationProp<RootStackParamList>>();
+  if (!success) {
+    Alert.alert('Erro', 'Credenciais inválidas');
+    return;
+  }
+
+  navigation.navigate('MainTabs', { screen: 'Search' });
+};
 
   return (
     <Container>
       <Logo source={require('../../assets/logo.png')} resizeMode="contain" />
-
       <Title>GeoMottu</Title>
       <Subtitle>Faça login para localizar o veículo</Subtitle>
-
       <Input
         placeholder="nome de usuário"
         placeholderTextColor="#aaaaaa"
@@ -41,12 +55,10 @@ const LoginScreen = () => {
         value={password}
         onChangeText={setPassword}
       />
-
       <LoginButton onPress={handleLogin}>
         <ButtonText>Entrar</ButtonText>
       </LoginButton>
-
-     <HelpButton onPress={() => navigation.navigate('Help')} >
+      <HelpButton onPress={() => navigation.navigate('Help')}>
         <HelpText>?</HelpText>
       </HelpButton>
     </Container>
@@ -101,7 +113,6 @@ const LoginButton = styled.TouchableOpacity`
   border-radius: 20px;
   justify-content: center;
   align-items: center;
-  margin-top: 8px;
 `;
 
 const ButtonText = styled.Text`

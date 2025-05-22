@@ -38,11 +38,14 @@ const Container = styled.View`
   justify-content: flex-start;
 `;
 
-const BackButton = styled.TouchableOpacity`
+const BackButton = styled.TouchableOpacity.attrs(() => ({
+  hitSlop: { top: 15, bottom: 15, left: 15, right: 15 },
+}))`
   position: absolute;
-  top: 50px;
+  top: 60px;
   left: 20px;
   z-index: 10;
+  padding: 5px;
 `;
 
 const InfoText = styled.Text`
