@@ -6,7 +6,7 @@ import { MainTabsParamList } from './MainTabs';
 import LoginScreen from '../screens/LoginScreen';
 import HelpScreen from '../screens/HelpScreen';
 import MainTabs from './MainTabs';
-import HelpSearchScreen from '../screens/HelpSearchScreen';
+import HelpSearchScreen from '../screens/HelpSearchScreen'
 
 import { AuthContext } from '../context/AuthContext';
 import SearchResultScreen from '../screens/SearchResultScreen';
