@@ -2,7 +2,7 @@ import React from 'react';
 import { Container } from './styles';
 import BackButton from './components/BackButton';
 import VehicleDetails from './components/VehicleDetails';
-import VehicleNotFound from './components/vehicleNotFound';
+import VehicleNotFound from './components/VehicleNotFound';
 import { useVehicle } from './hooks/useVehicle';
 
 const VehicleScreen = () => {

@@ -23,7 +23,7 @@ const SearchForm = () => {
     const vehicle = validateVehicle(username, vehicleId);
 
     if (!vehicle) {
-      Alert.alert('Erro', 'Veículo não encontrado');
+      navigation.navigate('Location', { vehicleId });
       return;
     }
 
