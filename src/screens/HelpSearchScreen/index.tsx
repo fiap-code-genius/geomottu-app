@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Container } from './styles';
-import BackButton from './components/BackButtom';
+import BackButton from './components/BackButton';
 import SearchForm from './components/SearchForm';
 
 const HelpSearchScreen = () => {

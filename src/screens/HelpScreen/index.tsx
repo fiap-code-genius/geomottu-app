@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { Container, InfoText } from './styles';
-import BackButton from './components/BackButtom';
+import BackButton from './components/BackButton';
 import FooterSection from './components/FooterSection';
 
 const HelpScreen = () => {
