@@ -1,5 +1,5 @@
 import { useAuth } from "../../../context/AuthContext";
-import { createVehicleId } from "../services/helpsearch.services";
+import { createVehicleId } from "../services/helpSearch.services";
 
 export const useHelpSearch = () => {
   const { currentUser } = useAuth();
