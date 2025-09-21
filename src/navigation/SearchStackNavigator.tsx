@@ -9,9 +9,10 @@ import VehicleScreen from '../screens/VehicleScreen';
 export type SearchStackParamList = {
   SearchMain: undefined;
   Location: { vehicleId: string };
-  SearchResult: { vehicleId: string };
+  SearchResult: { vehicleId: string; username: string };
   Vehicle: { vehicleId: string };
 };
+
 
 
 const Stack = createNativeStackNavigator<SearchStackParamList>();
