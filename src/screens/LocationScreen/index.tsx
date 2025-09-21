@@ -1,8 +1,8 @@
 import React from 'react';
 import { Container, Overlay, BottomSheet, DragIndicator } from './styles';
 import { useLocation } from './hooks/useLocation';
-import VehicleNotFound from './components/vehicleNotFound';
-import VehicleDetails from './components/veihicleDetails';
+import VehicleNotFound from './components/VehicleNotFound';
+import VehicleDetails from './components/VehicleDetails';
 
 const LocationScreen = () => {
   const { vehicle, vehicleId, handleDetails, handleNewSearch } = useLocation();
