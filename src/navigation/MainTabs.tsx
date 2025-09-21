@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import AccountScreen from '../screens/AccountScreen';
 import HistoryScreen from '../screens/HistoryScreen';
 import SearchStackNavigator from './SearchStackNavigator';
-import LogoutScreen from '../screens/LogoutScreen';
+import LogoutScreen from '../screens/LogoutScreen/index';
 import { Ionicons } from '@expo/vector-icons';
 
 
