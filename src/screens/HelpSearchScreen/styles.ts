@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 export const Container = styled.View`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.background};
-  padding: 60px 24px 0;
+  padding: ${({ theme }) => theme.spacing.xxl}px ${({ theme }) => theme.spacing.lg}px 0;
   align-items: center;
 `;
 
@@ -11,38 +11,40 @@ export const BackButtonContainer = styled.TouchableOpacity.attrs(() => ({
   hitSlop: { top: 15, bottom: 15, left: 15, right: 15 },
 }))`
   position: absolute;
-  top: 60px;
-  left: 20px;
+  top: ${({ theme }) => theme.spacing.xxl}px;
+  left: ${({ theme }) => theme.spacing.lg}px;
   z-index: 10;
-  padding: 5px;
+  padding: ${({ theme }) => theme.spacing.xs}px;
 `;
 
 export const Title = styled.Text`
-  font-size: 22px;
+  font-size: ${({ theme }) => theme.fontSize.xl}px;
   font-weight: bold;
   color: ${({ theme }) => theme.colors.text};
   text-align: center;
   font-family: ${({ theme }) => theme.fontFamily};
-  margin-bottom: 8px;
+  margin-bottom: ${({ theme }) => theme.spacing.sm}px;
 `;
 
 export const Subtitle = styled.Text`
-  font-size: 16px;
+  font-size: ${({ theme }) => theme.fontSize.md}px;
   color: ${({ theme }) => theme.colors.text};
   text-align: center;
-  margin-bottom: 24px;
+  margin-bottom: ${({ theme }) => theme.spacing.lg}px;
   font-family: ${({ theme }) => theme.fontFamily};
 `;
 
-export const Input = styled.TextInput`
+export const Input = styled.TextInput.attrs(({ theme }) => ({
+  placeholderTextColor: theme.colors.placeholder,
+}))`
   width: 100%;
   height: 40px;
-  background-color: #222;
-  border-radius: 8px;
-  padding: 0 16px;
+  background-color: ${({ theme }) => theme.colors.inputBackground};
+  border-radius: ${({ theme }) => theme.borderRadius.md}px;
+  padding: 0 ${({ theme }) => theme.spacing.md}px;
   color: ${({ theme }) => theme.colors.text};
-  margin-bottom: 12px;
-  font-size: 16px;
+  margin-bottom: ${({ theme }) => theme.spacing.sm}px;
+  font-size: ${({ theme }) => theme.fontSize.md}px;
   font-family: ${({ theme }) => theme.fontFamily};
 `;
 
@@ -50,14 +52,14 @@ export const SearchButton = styled.TouchableOpacity`
   width: 100%;
   height: 40px;
   background-color: ${({ theme }) => theme.colors.primary};
-  border-radius: 20px;
+  border-radius: ${({ theme }) => theme.borderRadius.xl}px;
   justify-content: center;
   align-items: center;
 `;
 
 export const ButtonText = styled.Text`
-  color: #000;
-  font-size: 18px;
+  color: ${({ theme }) => theme.colors.buttonText};
+  font-size: ${({ theme }) => theme.fontSize.lg}px;
   font-weight: bold;
   font-family: ${({ theme }) => theme.fontFamily};
 `;
@@ -67,5 +69,5 @@ export const ContentWrapper = styled.View`
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-top: 20px;
+  margin-top: ${({ theme }) => theme.spacing.lg}px;
 `;

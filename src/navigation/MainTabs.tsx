@@ -1,11 +1,12 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { Ionicons } from '@expo/vector-icons';
+import { useTheme } from 'styled-components/native';
+
 import AccountScreen from '../screens/AccountScreen';
 import HistoryScreen from '../screens/HistoryScreen';
 import SearchStackNavigator from './SearchStackNavigator';
-import LogoutScreen from '../screens/LogoutScreen/index';
-import { Ionicons } from '@expo/vector-icons';
-
+import LogoutScreen from '../screens/LogoutScreen';
 
 export type MainTabsParamList = {
   Profile: undefined;
@@ -14,20 +15,21 @@ export type MainTabsParamList = {
   Logout: undefined;
 };
 
-
 const Tab = createBottomTabNavigator<MainTabsParamList>();
 
-
 const MainTabs = () => {
+  const theme = useTheme();
+
   return (
     <Tab.Navigator
       initialRouteName="Search"
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: '#FFD600',
+        tabBarActiveTintColor: theme.colors.primary,  
+        tabBarInactiveTintColor: theme.colors.secondaryText, 
         tabBarStyle: {
-          backgroundColor: '#000',
-          borderTopWidth: 0,
+          backgroundColor: theme.colors.background,
+          borderTopColor: theme.colors.border,
           height: 70,
         },
       }}
@@ -75,6 +77,5 @@ const MainTabs = () => {
     </Tab.Navigator>
   );
 };
-
 
 export default MainTabs;

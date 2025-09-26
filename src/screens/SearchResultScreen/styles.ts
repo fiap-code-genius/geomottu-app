@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 export const Container = styled.View`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.background};
-  padding: 60px 24px 0;
+  padding: ${({ theme }) => theme.spacing.xxl}px ${({ theme }) => theme.spacing.lg}px 0;
   align-items: center;
 `;
 
@@ -11,10 +11,10 @@ export const BackButtonContainer = styled.TouchableOpacity.attrs(() => ({
   hitSlop: { top: 15, bottom: 15, left: 15, right: 15 },
 }))`
   position: absolute;
-  top: 60px;
-  left: 20px;
+  top: ${({ theme }) => theme.spacing.xxl}px;
+  left: ${({ theme }) => theme.spacing.lg}px;
   z-index: 10;
-  padding: 5px;
+  padding: ${({ theme }) => theme.spacing.xs}px;
 `;
 
 export const Content = styled.View`
@@ -26,37 +26,37 @@ export const Content = styled.View`
 
 export const Title = styled.Text`
   color: ${({ theme }) => theme.colors.text};
-  font-size: 20px;
+  font-size: ${({ theme }) => theme.fontSize.lg}px;
   font-weight: bold;
   font-family: ${({ theme }) => theme.fontFamily};
-  margin-bottom: 8px;
+  margin-bottom: ${({ theme }) => theme.spacing.xs}px;
 `;
 
 export const Subtitle = styled.Text`
-  color: #ccc;
-  font-size: 16px;
+  color: ${({ theme }) => theme.colors.text};
+  font-size: ${({ theme }) => theme.fontSize.md}px;
   font-family: ${({ theme }) => theme.fontFamily};
-  margin-bottom: 16px;
+  margin-bottom: ${({ theme }) => theme.spacing.md}px;
 `;
 
 export const IDContainer = styled.View`
   flex-direction: row;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: ${({ theme }) => theme.spacing.lg}px;
 `;
 
 export const VehicleID = styled.Text`
   color: ${({ theme }) => theme.colors.text};
-  font-size: 24px;
+  font-size: ${({ theme }) => theme.fontSize.xxl}px;
   font-weight: bold;
-  margin-left: 10px;
+  margin-left: ${({ theme }) => theme.spacing.sm}px;
   font-family: ${({ theme }) => theme.fontFamily};
 `;
 
 export const SearchButton = styled.TouchableOpacity`
   background-color: ${({ theme }) => theme.colors.primary};
-  padding: 8px 24px;
-  border-radius: 20px;
+  padding: ${({ theme }) => theme.spacing.sm}px ${({ theme }) => theme.spacing.lg}px;
+  border-radius: ${({ theme }) => theme.borderRadius.xl}px;
   width: 100%;
   height: 40px;
   align-items: center;
@@ -66,6 +66,6 @@ export const SearchButton = styled.TouchableOpacity`
 export const SearchText = styled.Text`
   font-weight: bold;
   font-family: ${({ theme }) => theme.fontFamily};
-  font-size: 18px;
-  color: #000;
+  font-size: ${({ theme }) => theme.fontSize.lg}px;
+  color: ${({ theme }) => theme.colors.buttonText};
 `;
