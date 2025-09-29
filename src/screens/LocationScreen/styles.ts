@@ -3,11 +3,18 @@ import styled from 'styled-components/native';
 export const Container = styled.View`
   flex: 1;
   justify-content: flex-end;
-  background-color: rgba(0, 0, 0, 0.5); // overlay fixo é ok aqui
+  background-color: rgba(0, 0, 0, 0.5);
 `;
 
 export const Overlay = styled.View`
   flex: 1;
+`;
+
+export const Title = styled.Text`
+  font-size: ${({ theme }) => theme.fontSize.xl}px;
+  font-weight: bold;
+  color: ${({ theme }) => theme.colors.text};
+  font-family: ${({ theme }) => theme.fontFamily};
 `;
 
 export const BottomSheet = styled.View`
@@ -33,6 +40,26 @@ export const VehicleId = styled.Text`
   font-family: ${({ theme }) => theme.fontFamily};
   margin-bottom: ${({ theme }) => theme.spacing.lg}px;
   text-align: center;
+`;
+
+export const SectionTitle = styled.Text`
+  font-size: ${({ theme }) => theme.fontSize.sm}px;
+  font-weight: bold;
+  color: ${({ theme }) => theme.colors.muted};
+  font-family: ${({ theme }) => theme.fontFamily};
+  margin-top: ${({ theme }) => theme.spacing.md}px;
+`;
+
+export const SectionValue = styled.Text<{ status?: string }>`
+  font-size: ${({ theme }) => theme.fontSize.md}px;
+  color: ${({ theme, status }) =>
+    status === 'regular'
+      ? theme.colors.primary
+      : status === 'irregular'
+      ? theme.colors.error
+      : theme.colors.text};
+  font-family: ${({ theme }) => theme.fontFamily};
+  margin-bottom: ${({ theme }) => theme.spacing.sm}px;
 `;
 
 export const GreenButton = styled.TouchableOpacity`

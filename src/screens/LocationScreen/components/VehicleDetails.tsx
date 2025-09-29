@@ -1,6 +1,11 @@
 import React from 'react';
 import { Vehicle } from '../../../types/vehicle';
-import { VehicleId, GrayButton, GreenButton, ButtonText } from '../styles';
+import {
+  Title,
+  GreenButton,
+  GrayButton,
+  ButtonText,
+} from '../styles';
 
 interface Props {
   vehicle: Vehicle;
@@ -10,14 +15,16 @@ interface Props {
 
 const VehicleDetails = ({ vehicle, onDetails, onNewSearch }: Props) => (
   <>
-    <VehicleId>
+    <Title>
       {vehicle.plate} - {vehicle.chassis}
-    </VehicleId>
+    </Title>
+
     <GrayButton onPress={onDetails}>
-      <ButtonText style={{ color: '#fff' }}>Detalhes do veículo</ButtonText>
+      <ButtonText>Ver Detalhes</ButtonText>
     </GrayButton>
+
     <GreenButton onPress={onNewSearch}>
-      <ButtonText style={{ color: '#000' }}>Nova Busca</ButtonText>
+      <ButtonText>Nova Busca</ButtonText>
     </GreenButton>
   </>
 );
