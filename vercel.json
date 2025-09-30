@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "public": true,
+  "builds": [
+    { "src": "dist/**", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/_expo/(.*)", "dest": "dist/_expo/$1" },
+    { "src": "/favicon.ico", "dest": "dist/favicon.ico" },
+    { "src": "/(.*)", "dest": "dist/$1" },
+    { "src": "/.*", "dest": "dist/index.html" }
+  ]
+}
