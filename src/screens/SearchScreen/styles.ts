@@ -3,17 +3,22 @@ import styled from 'styled-components/native';
 export const Container = styled.View`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.background};
+  position: relative;
+  overflow: hidden;
 `;
 
 export const Content = styled.View`
   position: absolute;
   bottom: 0;
+  left: 0;
+  right: 0;
   width: 100%;
   background-color: ${({ theme }) => theme.colors.background};
   border-top-left-radius: ${({ theme }) => theme.borderRadius.xxl}px;
   border-top-right-radius: ${({ theme }) => theme.borderRadius.xxl}px;
   padding: ${({ theme }) => theme.spacing.xl}px ${({ theme }) => theme.spacing.lg}px 100px;
   align-items: center;
+  elevation: 5;
 `;
 
 export const YellowDot = styled.View`

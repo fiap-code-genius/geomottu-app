@@ -3,6 +3,7 @@ import { Container, Overlay, BottomSheet, DragIndicator } from './styles';
 import { useLocation } from './hooks/useLocation';
 import VehicleNotFound from './components/VehicleNotFound';
 import VehicleDetails from './components/VehicleDetails';
+import MockResultMap from './MockResultMap';
 
 const LocationScreen = () => {
   const { vehicle, vehicleId, handleDetails, handleNewSearch } = useLocation();
@@ -11,6 +12,7 @@ const LocationScreen = () => {
 
   return (
     <Container>
+      <MockResultMap />
       <Overlay />
       <BottomSheet>
         <DragIndicator />
