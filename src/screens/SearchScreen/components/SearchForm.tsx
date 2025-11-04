@@ -3,7 +3,6 @@ import { Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Input, InstructionText, SearchButton, ButtonText, HelpText } from '../styles';
 import { useSearch } from '../hooks/useSearch';
-import { dumpVehicles } from '../../../dev/dumpVehicles';
 
 const SearchForm = () => {
   const [vehicleId, setVehicleId] = useState('');
@@ -19,8 +18,6 @@ const SearchForm = () => {
       Alert.alert('Erro', 'Usuário não autenticado');
       return;
     }
-
-    await dumpVehicles('SEARCH_BEFORE_VALIDATE');
 
     const vehicle = await validateVehicle(username, vehicleId);
 

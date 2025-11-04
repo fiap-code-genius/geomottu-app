@@ -45,7 +45,9 @@ const AccountScreen = () => {
       <SectionTitle>Veículos registrados</SectionTitle>
       <SectionValue>{currentUser.vehicleCount}</SectionValue>
 
-      <SectionTitle>Modo Escuro</SectionTitle>
+      <SectionTitle>
+        {isDark ? 'Modo Claro' : 'Modo Escuro'}
+      </SectionTitle>
       <Switch
         value={isDark}
         onValueChange={toggleTheme}

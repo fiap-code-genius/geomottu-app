@@ -5,7 +5,6 @@ import { SearchStackParamList } from '../../../navigation/SearchStackNavigator';
 import { useAuth } from '../../../context/AuthContext';
 import { getVehicleByIdAsync } from '../../../services/vehicleStorage';
 import { Vehicle } from '../../../types/vehicle';
-import { dumpVehicles } from '../../../dev/dumpVehicles';
 
 type LocationScreenRouteProp = RouteProp<SearchStackParamList, 'Location'>;
 type LocationScreenNavigationProp = NativeStackNavigationProp<SearchStackParamList, 'Location'>;
@@ -30,7 +29,6 @@ export const useLocation = () => {
       const userKey = norm(paramUsername) || norm(currentUser?.username);
       if (!userKey || !vehicleId) return;
 
-      await dumpVehicles('LOCATION_BEFORE_GET');
 
       const v = await getVehicleByIdAsync(userKey, vehicleId.trim());
       if (alive) setVehicle(v);
