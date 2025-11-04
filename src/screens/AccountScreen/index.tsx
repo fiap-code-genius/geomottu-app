@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigation, NavigationProp } from '@react-navigation/native';
 import { useAuth } from '../../context/AuthContext';
-import { users, UserProfile } from './types/account.types';
 import {
   Container,
   Circle,
@@ -29,17 +28,7 @@ const AccountScreen = () => {
   if (!currentUser) {
     return (
       <Container>
-        <Title>Usuário não encontrado</Title>
-      </Container>
-    );
-  }
-
-  const userDetails = users.find((u: UserProfile) => u.username === currentUser);
-
-  if (!userDetails) {
-    return (
-      <Container>
-        <Title>Dados do usuário não disponíveis</Title>
+        <Title>Carregando…</Title>
       </Container>
     );
   }
@@ -47,14 +36,14 @@ const AccountScreen = () => {
   return (
     <Container>
       <Circle />
-      <Title>{userDetails.name}</Title>
-      <Subtitle>{userDetails.location}</Subtitle>
+      <Title>{currentUser.name}</Title>
+      <Subtitle>{currentUser.location}</Subtitle>
 
       <SectionTitle>Nome de usuário</SectionTitle>
-      <SectionValue>{userDetails.username}</SectionValue>
+      <SectionValue>{currentUser.username}</SectionValue>
 
       <SectionTitle>Veículos registrados</SectionTitle>
-      <SectionValue>{userDetails.vehicleCount}</SectionValue>
+      <SectionValue>{currentUser.vehicleCount}</SectionValue>
 
       <SectionTitle>Modo Escuro</SectionTitle>
       <Switch

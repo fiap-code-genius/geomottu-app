@@ -5,6 +5,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../../../navigation/AppNavigator';
 import { Input, LoginButton, ButtonText, HelpButton, HelpText } from '../styles';
 import { useLogin } from '../hooks/useLogin';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type LoginScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Login'>;
 
@@ -16,20 +17,28 @@ const LoginForm = () => {
   const [password, setPassword] = useState('');
 
   const handleLogin = async () => {
-    if (!username || !password) {
-      Alert.alert('Erro', 'Preencha todos os campos');
-      return;
-    }
+  if (!username || !password) {
+    Alert.alert('Erro', 'Preencha todos os campos');
+    return;
+  }
 
-    const success = await login(username, password);
+  const success = await login(username, password);
 
-    if (!success) {
-      Alert.alert('Erro', 'Credenciais inválidas');
-      return;
-    }
+  if (!success) {
+    Alert.alert('Erro', 'Credenciais inválidas');
+    return;
+  }
 
+  const stored = await AsyncStorage.getItem('currentUser');
+  const user = stored ? JSON.parse(stored) : null;
+
+  if (user?.role === 'admin') {
+    navigation.navigate('Admin');
+  } else {
     navigation.navigate('MainTabs', { screen: 'Search' });
-  };
+  }
+};
+
 
   return (
     <>

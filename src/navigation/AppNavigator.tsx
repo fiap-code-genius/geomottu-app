@@ -6,10 +6,10 @@ import { MainTabsParamList } from './MainTabs';
 import LoginScreen from '../screens/LoginScreen';
 import HelpScreen from '../screens/HelpScreen';
 import MainTabs from './MainTabs';
-import HelpSearchScreen from '../screens/HelpSearchScreen'
-
-import { AuthContext } from '../context/AuthContext';
+import HelpSearchScreen from '../screens/HelpSearchScreen';
 import SearchResultScreen from '../screens/SearchResultScreen';
+import AdminScreen from '../screens/AdminScreen';
+import { AuthContext } from '../context/AuthContext';
 
 export type RootStackParamList = {
   Login: undefined;
@@ -18,26 +18,31 @@ export type RootStackParamList = {
   HelpSearch: undefined;
   SearchResult: { vehicleId: string; username: string };
   Location: { vehicleId: string };
+  Admin: undefined;  
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 const AppNavigator = () => {
-  const { isLoggedIn } = useContext(AuthContext);
+  const { isLoggedIn, currentUser } = useContext(AuthContext);
 
   return (
     <Stack.Navigator screenOptions={{ headerShown: false }}>
-      {isLoggedIn ? (
+      {!isLoggedIn ? (
+        <>
+          <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="Help" component={HelpScreen} />
+        </>
+      ) : currentUser?.role === 'admin' ? (
+        <>
+          <Stack.Screen name="Admin" component={AdminScreen} />
+        </>
+      ) : (
         <>
           <Stack.Screen name="MainTabs" component={MainTabs} />
           <Stack.Screen name="Help" component={HelpScreen} />
           <Stack.Screen name="HelpSearch" component={HelpSearchScreen} />
           <Stack.Screen name="SearchResult" component={SearchResultScreen} />
-        </>
-      ) : (
-        <>
-          <Stack.Screen name="Login" component={LoginScreen} />
-          <Stack.Screen name="Help" component={HelpScreen} />
         </>
       )}
     </Stack.Navigator>

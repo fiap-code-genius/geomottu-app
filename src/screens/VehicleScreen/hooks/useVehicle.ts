@@ -12,10 +12,10 @@ export const useVehicle = () => {
   const navigation = useNavigation<VehicleScreenNavigationProp>();
   const route = useRoute<VehicleScreenRouteProp>();
   const { vehicleId } = route.params;
-  const { currentUser: username } = useAuth();
+  const { currentUser } = useAuth();
 
-  const vehicle: Vehicle | undefined = username
-    ? getVehicleById(username, vehicleId)
+  const vehicle: Vehicle | undefined = currentUser
+    ? getVehicleById(currentUser.username, vehicleId)
     : undefined;
 
   const handleBack = () => {

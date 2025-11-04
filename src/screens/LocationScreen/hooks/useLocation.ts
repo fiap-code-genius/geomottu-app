@@ -13,7 +13,7 @@ export const useLocation = () => {
   const route = useRoute<LocationScreenRouteProp>();
 
   const vehicleId = route.params?.vehicleId;
-  const { currentUser: username } = useAuth();
+  const { currentUser } = useAuth();
 
   useEffect(() => {
     if (!vehicleId) {
@@ -22,10 +22,10 @@ export const useLocation = () => {
   }, [vehicleId, navigation]);
 
   const vehicle: Vehicle | undefined =
-    username && vehicleId ? getVehicleById(username, vehicleId) : undefined;
+    currentUser && vehicleId ? getVehicleById(currentUser.username, vehicleId) : undefined;
 
   const handleDetails = () => {
-    if (!username || !vehicleId) return;
+    if (!currentUser || !vehicleId) return;
     navigation.navigate('Vehicle', { vehicleId });
   };
 
