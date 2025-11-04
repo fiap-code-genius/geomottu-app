@@ -3,6 +3,7 @@ import { Alert } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { Input, InstructionText, SearchButton, ButtonText, HelpText } from '../styles';
 import { useSearch } from '../hooks/useSearch';
+import { dumpVehicles } from '../../../dev/dumpVehicles';
 
 const SearchForm = () => {
   const [vehicleId, setVehicleId] = useState('');
@@ -14,21 +15,22 @@ const SearchForm = () => {
       Alert.alert('Erro', 'Digite um ID de veículo');
       return;
     }
-
     if (!username) {
       Alert.alert('Erro', 'Usuário não autenticado');
       return;
     }
 
-    const vehicle = validateVehicle(username, vehicleId);
+    await dumpVehicles('SEARCH_BEFORE_VALIDATE');
+
+    const vehicle = await validateVehicle(username, vehicleId);
 
     if (!vehicle) {
-      navigation.navigate('Location', { vehicleId });
+      navigation.navigate('Location', { vehicleId, username });
       return;
     }
 
     await addToHistory(vehicleId);
-    navigation.navigate('Location', { vehicleId });
+    navigation.navigate('Location', { vehicleId, username });
   };
 
   return (

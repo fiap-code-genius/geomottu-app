@@ -8,9 +8,10 @@ import VehicleScreen from '../screens/VehicleScreen';
 
 export type SearchStackParamList = {
   SearchMain: undefined;
-  Location: { vehicleId: string };
-  SearchResult: { vehicleId: string; username: string };
-  Vehicle: { vehicleId: string };
+  HelpSearch: undefined;
+  Location: { vehicleId: string; username?: string };
+  Vehicle: { vehicleId: string; username?: string };
+  SearchResult: { vehicleId: string; username: string }; 
 };
 
 

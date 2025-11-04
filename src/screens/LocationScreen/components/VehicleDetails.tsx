@@ -16,7 +16,7 @@ interface Props {
 const VehicleDetails = ({ vehicle, onDetails, onNewSearch }: Props) => (
   <>
     <Title>
-      {vehicle.plate} - {vehicle.chassis}
+      {vehicle.plate}
     </Title>
 
     <GrayButton onPress={onDetails}>

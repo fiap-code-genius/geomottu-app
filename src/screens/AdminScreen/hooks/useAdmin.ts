@@ -1,12 +1,31 @@
-import { useState } from 'react';
-import { vehiclesByUser, Vehicle } from '../../../types/vehicle';
+import { useEffect, useState, useCallback } from 'react';
+import type { Vehicle } from '../../../types/vehicle';
+import {
+  getAllVehicles,
+  addVehicle as storageAdd,
+  deleteVehicle as storageDelete,
+  updateVehicle as storageUpdate,
+  moveVehicle as storageMove,
+} from '../../../services/vehicleStorage';
 
 export const useAdmin = () => {
-  const [data, setData] = useState(vehiclesByUser);
+  const [data, setData] = useState<Record<string, Vehicle[]>>({});
+  const [loading, setLoading] = useState(true);
 
-  const getAllVehicles = () => {
+  const refresh = useCallback(async () => {
+    setLoading(true);
+    const all = await getAllVehicles();
+    setData(all);
+    setLoading(false);
+  }, []);
+
+  useEffect(() => {
+    refresh();
+  }, [refresh]);
+
+  const getAllVehiclesFlat = () => {
     return Object.entries(data).flatMap(([username, vehicles]) =>
-      vehicles.map((v) => ({
+      vehicles.map(v => ({
         ...v,
         username,
         branchName: username.toUpperCase(),
@@ -14,57 +33,47 @@ export const useAdmin = () => {
     );
   };
 
-  const addVehicle = (username: string, newVehicle: Vehicle) => {
-    setData((prev) => ({
-      ...prev,
-      [username]: [
-        ...(prev[username] || []),
-        { ...newVehicle, chassis: Date.now().toString() },
-      ],
-    }));
+  const addVehicle = async (username: string, newVehicle: Vehicle) => {
+    await storageAdd(username.trim().toLowerCase(), newVehicle);
+    await refresh();
   };
 
-  const deleteVehicle = (username: string, chassis: string) => {
-    setData((prev) => ({
-      ...prev,
-      [username]: prev[username].filter((v) => v.chassis !== chassis),
-    }));
+  const deleteVehicle = async (username: string, chassis: string) => {
+    await storageDelete(username.trim().toLowerCase(), chassis);
+    await refresh();
   };
 
-  const updateVehicle = (
+  const updateVehicle = async (
     username: string,
     chassis: string,
     updatedFields: Partial<Vehicle>
   ) => {
-    setData((prev) => ({
-      ...prev,
-      [username]: prev[username].map((v) =>
-        v.chassis === chassis ? { ...v, ...updatedFields } : v
-      ),
-    }));
+    await storageUpdate(username.trim().toLowerCase(), chassis, updatedFields);
+    await refresh();
   };
 
-  const moveVehicle = (
-  oldUsername: string,
-  newUsername: string,
-  chassis: string,
-  updatedFields: Partial<Vehicle>
-) => {
-  setData((prev) => {
-    const oldList = prev[oldUsername] || [];
-    const vehicle = oldList.find((v) => v.chassis === chassis);
-    if (!vehicle) return prev;
+  const moveVehicle = async (
+    oldUsername: string,
+    newUsername: string,
+    chassis: string,
+    updatedFields: Partial<Vehicle>
+  ) => {
+    await storageMove(
+      oldUsername.trim().toLowerCase(),
+      newUsername.trim().toLowerCase(),
+      chassis,
+      updatedFields
+    );
+    await refresh();
+  };
 
-    const updatedVehicle = { ...vehicle, ...updatedFields };
-
-    return {
-      ...prev,
-      [oldUsername]: oldList.filter((v) => v.chassis !== chassis),
-      [newUsername]: [...(prev[newUsername] || []), updatedVehicle],
-    };
-  });
-};
-
-return { getAllVehicles, addVehicle, deleteVehicle, updateVehicle, moveVehicle };
-
+  return {
+    loading,
+    getAllVehicles: getAllVehiclesFlat,
+    addVehicle,
+    deleteVehicle,
+    updateVehicle,
+    moveVehicle,
+    refresh,
+  };
 };

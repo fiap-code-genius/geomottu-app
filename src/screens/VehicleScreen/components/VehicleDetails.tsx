@@ -9,7 +9,7 @@ interface Props {
 const VehicleDetails = ({ vehicle }: Props) => (
   <>
     <Title>
-      {vehicle.plate} - {vehicle.chassis}
+      {vehicle.plate}
     </Title>
 
     <SectionTitle>Placa</SectionTitle>
