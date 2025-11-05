@@ -1,4 +1,4 @@
-# GeoMottu
+![eas-update (1)](https://github.com/user-attachments/assets/e7afb0cb-b8d4-45a1-a426-d07ce7c7ed32)# GeoMottu
 
 Aplicativo mobile desenvolvido em **React Native** com **TypeScript**, voltado para recursos de geolocalização, gestão de veículos e suporte para filiais.
 
@@ -8,9 +8,7 @@ Aplicativo mobile desenvolvido em **React Native** com **TypeScript**, voltado p
 - [Wesley Sena](https://github.com/SunaUezuri) | RM: 558043  
 
 ## Expo GO
-- [Expo.dev](https://expo.dev/preview/update?message=projeto+upado&updateRuntimeVersion=1.0.0&createdAt=2025-09-30T04%3A09%3A59.273Z&slug=exp&projectId=8331093d-c56e-470a-b8e8-66b7eba3af10&group=8c63898b-5860-46e5-8d6d-4ccd1e8aa110)
-- [Versão Vercel em caso de incompatibilidade de seu Expo GO no celular](https://geomottu-app.vercel.app/)
-
+<img width="322" height="323" alt="image" src="https://github.com/user-attachments/assets/0daf27c7-8cdd-4ab4-8ef4-d06df579e3c0" />
 
 ## 👨‍🎨 Figma
 - [Telas](https://www.figma.com/design/lXV1qUIHx6enLAghr84FXH/Untitled?node-id=0-1&t=qidsB1ylYpO79PRd-1)  
