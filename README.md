@@ -1,4 +1,4 @@
-![eas-update (1)](https://github.com/user-attachments/assets/e7afb0cb-b8d4-45a1-a426-d07ce7c7ed32)# GeoMottu
+# GeoMottu
 
 Aplicativo mobile desenvolvido em **React Native** com **TypeScript**, voltado para recursos de geolocalização, gestão de veículos e suporte para filiais.
 
