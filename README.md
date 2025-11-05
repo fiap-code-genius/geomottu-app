@@ -28,6 +28,7 @@ O aplicativo possui as seguintes telas e funcionalidades principais:
 
 🏍️ **Gerenciamento de motos**  
 - Mostra informações sobre os veículos cadastrados, como status, localização e identificação.
+- Permite que o usuário administrador adicione, edite ou remova motos.
 
 🧑 **Conta do Usuário**  
 - Exibe detalhes da filial de acordo com o login.
@@ -75,9 +76,4 @@ npm start
 ## 📱 Login
 - username: mbut senha: 123
 - username: mpin senha: 123
-
-## 📱 Veículos registrados
-- mp1-1
-- mp2-2
-- mb1-3
-- mb2-4
+- username: admin senha: admin
