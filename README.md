@@ -10,6 +10,10 @@ Aplicativo mobile desenvolvido em **React Native** com **TypeScript**, voltado p
 ## Expo GO
 <img width="322" height="323" alt="image" src="https://github.com/user-attachments/assets/0daf27c7-8cdd-4ab4-8ef4-d06df579e3c0" />
 
+## .APK
+<img width="322" height="323" alt="image" src="https://github.com/user-attachments/assets/b5587bb4-bf74-4e82-8aca-609ce2f886b9" />
+
+
 ## 👨‍🎨 Figma
 - [Telas](https://www.figma.com/design/lXV1qUIHx6enLAghr84FXH/Untitled?node-id=0-1&t=qidsB1ylYpO79PRd-1)  
 - [Protótipo Navegável](https://www.figma.com/proto/lXV1qUIHx6enLAghr84FXH/Untitled?node-id=1-609&p=f&t=qidsB1ylYpO79PRd-0&scaling=min-zoom&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=1%3A609)  
@@ -75,3 +79,6 @@ npm start
 - username: mbut senha: 123
 - username: mpin senha: 123
 - username: admin senha: admin
+
+## Hash
+a16afdfd26233388f42256def18955ce24c9e60e
